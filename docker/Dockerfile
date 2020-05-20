@@ -9,12 +9,13 @@ COPY ./Pipfile      ./
 COPY ./Pipfile.lock ./
 RUN pipenv sync
 
-ARG ENV_TAG=DEV
+ARG ENV_TAG
+ENV ENV_TAG $ENV_TAG
 
 COPY . .
-COPY docker/config_vault/.env.${ENV_TAG}   ./.env
+COPY docker/config_vault/.env.$ENV_TAG   ./.env
 #    .env associated with :ENV_TAG         copied to /app/.env
 
-RUN echo ${ENV_TAG}
+RUN echo $ENV_TAG
 
 CMD PYTHONPATH=`pwd` pipenv run python ./src/test.py
