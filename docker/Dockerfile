@@ -2,6 +2,8 @@ FROM namgivu/ubuntu-pipenv:18.04-3.6
 
 WORKDIR /app
 
+RUN echo '200520-x0 update x# to force docker build run from this line'
+
 # install pip packages
 COPY ./Pipfile      ./
 COPY ./Pipfile.lock ./
