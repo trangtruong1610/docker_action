@@ -10,7 +10,8 @@ RUN pipenv sync
 ARG ENV_TAG=DEV
 
 COPY . .
-COPY docker/config_vault/.env.${ENV_TAG} ./.env
+COPY docker/config_vault/.env.${ENV_TAG}   ./.env
+#    .env associated with :ENV_TAG         copied to /app/.env
 
 RUN echo ${ENV_TAG}
 
