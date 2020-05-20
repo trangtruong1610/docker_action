@@ -1,5 +1,17 @@
-FROM ubuntu
+FROM namgivu/ubuntu-pipenv:18.04-3.6
 
-#TODO Trang cp the .env.${ENV_TAG} to the container; ENV_TAG is an env variable defined before
+WORKDIR /app
 
-CMD ["echo", "Hello World ..!"]
+# install pip packages
+COPY ./Pipfile      ./
+COPY ./Pipfile.lock ./
+RUN pipenv sync
+
+ARG ENV_TAG=DEV
+
+COPY . .
+COPY docker/config_vault/.env.${ENV_TAG} ./.env
+
+RUN echo ${ENV_TAG}
+
+CMD PYTHONPATH=`pwd` pipenv run python ./src/test.py
