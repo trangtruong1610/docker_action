@@ -9,6 +9,7 @@ COPY ./Pipfile      ./
 COPY ./Pipfile.lock ./
 RUN pipenv sync
 
+#TODO trang should only use ENV, remove ARG
 ARG ENV_TAG
 ENV ENV_TAG $ENV_TAG
 
