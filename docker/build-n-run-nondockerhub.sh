@@ -12,5 +12,5 @@ cn='trangtruong1610-docker-action'   # cn aka container_name
     gitcommitid=`git describe --always`
 
     # cleared now, run it
-    docker build   --build-arg ENV_TAG=UAT   --build-arg GIT_COMMIT_ID=$gitcommitid   --file "$SCRIPT_HOME/Dockerfile"   -t $it      $APP_HOME       && docker run --name=$cn $it
-    #              buildtime param ENV_TAG   buildtime param GIT_COMMIT_ID            Dockerfile path                    image tag   source folder      run the built image
+    docker build   --build-arg ENV_TAG=UAT   --build-arg GIT_COMMIT_ID=$gitcommitid   --file "$SCRIPT_HOME/Dockerfile"   -t $it:UAT      $APP_HOME       && docker run --name=$cn $it:UAT
+    #              buildtime param ENV_TAG   buildtime param GIT_COMMIT_ID            Dockerfile path                    image tag    source folder      run the built image
