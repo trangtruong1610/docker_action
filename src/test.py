@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-import os
+import os, subprocess
 
 PWD      = os.path.dirname(__file__)
 APP_HOME = os.path.abspath(os.path.join(PWD, '..') )
