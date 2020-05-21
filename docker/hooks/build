@@ -4,4 +4,4 @@ SCRIPT_HOME=`cd $(dirname $BASH_SOURCE) && pwd`  # get SCRIPT_HOME=executed scri
    DOCKER=`cd "$SCRIPT_HOME/.." && pwd`
 
 
-docker build --build-arg ENV_TAG=UAT -f $DOCKER/Dockerfile -t trangtruong1610/docker-action $APP_HOME
+docker build --build-arg ENV_TAG=DEV -f $DOCKER/Dockerfile -t trangtruong1610/docker-action $APP_HOME
