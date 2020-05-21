@@ -14,7 +14,8 @@ ARG ENV_TAG
 ARG GIT_COMMIT_ID
 
 # broad cast it as container env var
-ENV ENV_TAG $ENV_TAG
+ENV ENV_TAG       $ENV_TAG
+ENV GIT_COMMIT_ID $GIT_COMMIT_ID
 
 # the buildee
 COPY . .
