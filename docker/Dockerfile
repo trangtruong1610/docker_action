@@ -9,9 +9,13 @@ COPY ./Pipfile      ./
 COPY ./Pipfile.lock ./
 RUN pipenv sync
 
+# load build arg :ENV_TAG
 ARG ENV_TAG
+
+# broad cast it as container env var
 ENV ENV_TAG $ENV_TAG
 
+# the buildee
 COPY . .
 COPY docker/config_vault/.env.$ENV_TAG   ./.env
 #    .env associated with :ENV_TAG         copied to /app/.env

@@ -9,5 +9,5 @@ cn='trangtruong1610-docker-action'   # cn aka container_name
     docker image rm $it || true   # remove image if exists
 
     # cleared now, run it
-    docker build --build-arg ENV_TAG=UAT --file "$SCRIPT_HOME/Dockerfile"   -t $it      $APP_HOME       && docker run --name=$cn $it
-#                                        Dockerfile path                    image tag   source folder      run the built image
+    docker build --build-arg ENV_TAG=UAT   --file "$SCRIPT_HOME/Dockerfile"   -t $it      $APP_HOME       && docker run --name=$cn $it
+    #            TODO trang always UAT?    Dockerfile path                    image tag   source folder      run the built image
