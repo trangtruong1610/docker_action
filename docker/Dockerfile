@@ -9,8 +9,9 @@ COPY ./Pipfile      ./
 COPY ./Pipfile.lock ./
 RUN pipenv sync
 
-# load build arg :ENV_TAG
+# load build arg :ENV_TAG :GIT_COMMIT_ID
 ARG ENV_TAG
+ARG GIT_COMMIT_ID
 
 # broad cast it as container env var
 ENV ENV_TAG $ENV_TAG
@@ -21,5 +22,6 @@ COPY docker/config_vault/.env.$ENV_TAG   ./.env
 #    .env associated with :ENV_TAG         copied to /app/.env
 
 RUN echo $ENV_TAG
+RUN echo $GIT_COMMIT_ID
 
 CMD PYTHONPATH=`pwd` pipenv run python ./src/test.py

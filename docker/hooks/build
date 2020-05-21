@@ -3,6 +3,7 @@ SCRIPT_HOME=`cd $(dirname $BASH_SOURCE) && pwd`  # get SCRIPT_HOME=executed scri
    APP_HOME=`cd "$SCRIPT_HOME/../.." && pwd`
 DOCKER_HOME=`cd "$SCRIPT_HOME/.." && pwd`
 
+gitcommitid=`git describe --always`
 
-docker build --build-arg ENV_TAG=UAT   -f $DOCKER_HOME/Dockerfile   -t trangtruong1610/docker-action   $APP_HOME
-#            TODO trang always UAT?    Dockerfile path              docker image tag                   source path
+docker build --build-arg ENV_TAG=UAT --build-arg GIT_COMMIT_ID=$gitcommitid   -f $DOCKER_HOME/Dockerfile   -t trangtruong1610/docker-action   $APP_HOME
+#            TODO trang always UAT?                                              Dockerfile path              docker image tag                   source path
