@@ -6,5 +6,8 @@ DOCKER_HOME=`cd "$SCRIPT_HOME/.." && pwd`
     # get git commit id
     gitcommitid=`git describe --always`
 
-    docker build   --build-arg ENV_TAG=$DOCKER_TAG   --build-arg GIT_COMMIT_ID=$gitcommitid   -f $DOCKER_HOME/Dockerfile         -t $DOCKER_REPO     .
-    #              buildtime param ENV_TAG           buildtime param GIT_COMMIT_ID               Dockerfile path                    image tag        source folder
+    # get ENV_TAG from .env.UAT
+    source $DOCKER_HOME/config_vault/.env.UAT
+
+    docker build   --build-arg ENV_TAG=$ENV_TAG   --build-arg GIT_COMMIT_ID=$gitcommitid   -f $DOCKER_HOME/Dockerfile   -t trangtruong1610/docker-action:$ENV_TAG   $APP_HOME
+    #              buildtime param ENV_TAG          buildtime param GIT_COMMIT_ID             Dockerfile path              image tag                                source folder
