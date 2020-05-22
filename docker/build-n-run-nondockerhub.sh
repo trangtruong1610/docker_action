@@ -11,8 +11,8 @@ cn='trangtruong1610-docker-action'   # cn aka container_name
     # get git commit id
     gitcommitid=`git describe --always`
 
-    # ENV_TAG
-    ENV_TAG=DEV
+    # get ENV_TAG from .env.DEV
+    source $SCRIPT_HOME/config_vault/.env.DEV
 
     # cleared now, run it
     docker build   --build-arg ENV_TAG=$ENV_TAG   --build-arg GIT_COMMIT_ID=$gitcommitid   --file "$SCRIPT_HOME/Dockerfile"   -t $it:$ENV_TAG       $APP_HOME       && docker run --name=$cn $it:$ENV_TAG
